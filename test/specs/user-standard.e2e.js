@@ -34,12 +34,6 @@ describe('My Login application', () => {
         await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Username and password do not match any user in this service");
         browser.refresh()
     });
-    it('should login with locked credentials', async () => {
-        await LoginPage.login('locked_out_user','secret_sauce');
-        await LoginPage.btnLogin.click();
-        await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Sorry, this user has been locked out.");
-
-    });
     it('should login with valid credentials', async () => {
         await LoginPage.login('standard_user','secret_sauce');
         await expect(browser).toHaveUrl("https://www.saucedemo.com/inventory.html");
@@ -47,21 +41,7 @@ describe('My Login application', () => {
         await LoginPage.hamburMenu.click();
         await LoginPage.logout.click();
     });
-    it('should login with a problematic credentials', async () => {
-        await LoginPage.login('problem_user','secret_sauce');
-        await expect(browser).toHaveUrl("https://www.saucedemo.com/inventory.html");
-        await LoginPage.hamburMenu.click();
-        await browser.pause(1000);
-        await LoginPage.logout.click();
-    });
-    it('should login with valid credentials', async () => {
-        await LoginPage.login('performance_glitch_user','secret_sauce');
-        await browser.pause(7000);
-        await expect(browser).toHaveUrl("https://www.saucedemo.com/inventory.html");
-        await browser.pause(3000);
-        await LoginPage.hamburMenu.click();
-        await LoginPage.logout.click();
-    });
+  
 });
 
 
