@@ -5,7 +5,6 @@ class PurchasePage {
     get inputUsername () {
         return $('#user-name');
     }
-
     get inputPassword () {
         return $('#password');
     }
@@ -67,7 +66,7 @@ class PurchasePage {
         return $('#remove-sauce-labs-onesie');
     }
     get btnRemoveTshirtRed () {
-        return $('#//*[@id="remove-test.allthethings()-t-shirt-(red)"]');
+        return $('//*[@id="remove-test.allthethings()-t-shirt-(red)"]');
     }
     get btnCheckout () {
         return $('#checkout');
@@ -79,12 +78,20 @@ class PurchasePage {
         return $('#reset_sidebar_link');
     }
     get msgError () {
-        return $('#error-message-container error');
+        return $('//*[@id="checkout_info_container"]/div/form/div[1]/div[4]/h3');
     }
     get logout () {
         return $('#logout_sidebar_link');
     }
-
+    get twitter () {
+        return $('.social_twitter');
+    }
+    get facebook () {
+        return $('.social_facebook');
+    }
+    get linkedIn () {
+        return $('.social_linkedin');
+    }
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password

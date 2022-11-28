@@ -60,13 +60,8 @@ describe('My Login application', () => {
         await PurchasePage.btnRemoveFleeceJacket.click();
         await PurchasePage.btnRemoveLabsOnesie.click();
         await PurchasePage.btnRemoveTshirtRed.click();
-        await PurchasePage.hamburMenu.click();
-        await PurchasePage.logout.waitForClickable();
-        await PurchasePage.logout.click();
     });
     it('complete the sell with empty/imcomplete checkout information', async () => {
-        await PurchasePage.login('standard_user','secret_sauce');
-        await expect(browser).toHaveUrl("https://www.saucedemo.com/inventory.html");
         await PurchasePage.btnAddBackpack.waitForClickable();
         await PurchasePage.btnAddBackpack.click();
         const cartNumber = await $('#shopping_cart_container > a > span').getText();
@@ -75,14 +70,18 @@ describe('My Login application', () => {
         await PurchasePage.btnCart.click();
         await PurchasePage.btnCheckout.waitForClickable();
         await PurchasePage.btnCheckout.click();
-        await PurchasePage.purchase('','','');
-        await expect(PurchasePage.errorMsg).toHaveText("Error: First Name is required");
+        await PurchasePage.btnContinue.waitForClickable();
+        await PurchasePage.btnContinue.click();
+        await expect(PurchasePage.msgError).toHaveText("Error: First Name is required");
+        browser.refresh()
         await PurchasePage.purchase('','raviola','12345');
-        await expect(PurchasePage.errorMsg).toHaveText("Error: First Name is required");
+        await expect(PurchasePage.msgError).toHaveText("Error: First Name is required");
+        browser.refresh()
         await PurchasePage.purchase('matias','','12345');
-        await expect(PurchasePage.errorMsg).toHaveText("Error: Last Name is required");
+        await expect(PurchasePage.msgError).toHaveText("Error: Last Name is required");
+        browser.refresh()
         await PurchasePage.purchase('matias','raviola','');
-        await expect(PurchasePage.errorMsg).toHaveText("Error: Postal Code is required");
+        await expect(PurchasePage.msgError).toHaveText("Error: Postal Code is required");
         await PurchasePage.hamburMenu.click();
         await PurchasePage.logout.waitForClickable();
         await PurchasePage.logout.click();
