@@ -32,6 +32,21 @@ class PurchasePage {
     get btnCart () {
         return $('#shopping_cart_container');
     }
+    get btnFilter (){
+        return $('#header_container > div.header_secondary_container > div.right_component > span > select');
+    }
+    get filterA2Z (){
+        return $('#header_container > div.header_secondary_container > div.right_component > span > select > option:nth-child(1)');
+    }
+    get filterZ2A (){
+        return $('#header_container > div.header_secondary_container > div.right_component > span > select > option:nth-child(2)');
+    }
+    get filterLow2High (){
+        return $('#header_container > div.header_secondary_container > div.right_component > span > select > option:nth-child(3)');
+    }
+    get filterHigh2Low (){
+        return $('#header_container > div.header_secondary_container > div.right_component > span > select > option:nth-child(4)');
+    }
     get btnAddBikeLight () {
         return $('#add-to-cart-sauce-labs-bike-light');
     }
@@ -90,7 +105,7 @@ class PurchasePage {
         return $('.social_facebook');
     }
     get linkedIn () {
-        return $('.social_linkedin');
+        return $('#page_wrapper > footer > ul > li.social_linkedin > a');
     }
     /**
      * a method to encapsule automation code to interact with the page

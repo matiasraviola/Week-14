@@ -19,10 +19,8 @@ it('social media ', async () => {
     browser.switchWindow('https://www.saucedemo.com/inventory.html')
 
     await PurchasePage.linkedIn.click();
-    browser.switchWindow('https://www.linkedin.com/company/sauce-labs/')
-    await expect(browser).toHaveUrl("https://www.linkedin.com/company/sauce-labs/");
+    await expect(PurchasePage.linkedIn).toHaveAttrContaining('href','https://www.linkedin.com/company/sauce-labs/')
     browser.switchWindow('https://www.saucedemo.com/inventory.html')
-
     await PurchasePage.hamburMenu.click();
     await PurchasePage.logout.waitForClickable();
     await PurchasePage.logout.click();

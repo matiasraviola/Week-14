@@ -86,4 +86,19 @@ describe('My Login application', () => {
         await PurchasePage.logout.waitForClickable();
         await PurchasePage.logout.click();
     });
+    it('click on the filters', async () => {
+        await PurchasePage.login('standard_user','secret_sauce');
+        await expect(browser).toHaveUrl("https://www.saucedemo.com/inventory.html");
+        await PurchasePage.btnFilter.click();
+        await PurchasePage.filterA2Z.click();
+        await PurchasePage.btnFilter.click();
+        await PurchasePage.filterZ2A.click();
+        await PurchasePage.btnFilter.click();
+        await PurchasePage.filterLow2High.click();
+        await PurchasePage.btnFilter.click();
+        await PurchasePage.filterHigh2Low.click();
+        await PurchasePage.hamburMenu.click();
+        await PurchasePage.logout.waitForClickable();
+        await PurchasePage.logout.click();
+    });
 });
